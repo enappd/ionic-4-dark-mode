@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-title class="ion-text-start"> Now &rarr; {{COMPLETE_ADDRESS}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="ion-text-capitalize">
+        <ion-avatar slot="start">
+          <img src={{IMAGE_HEADER}}>
+        </ion-avatar>
+        Offer
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (ionScroll)="logScrolling($event)" [scrollEvents]="true">
+  <div class="verticalScrollContainer">
+    <ion-card [ngStyle]="{'background':'url('+ VerticalCards.image +')'}" *ngFor="let VerticalCards of cardDetails"
+      class="cardVertical">
+      <div class="overlay">
+        <div class="bottomText">
+          <ion-text color='light' class="title">{{VerticalCards.text1}}</ion-text>
+          <ion-text color='light' class="smallTitle">{{VerticalCards.text2}}</ion-text>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+  <ion-list>
+    <ion-list-header id='fixPosition'>
+      <ion-label>768 RESTAURANTS</ion-label>
+      <ion-button fill='clear' color='dark'>
+        <ion-icon slot='start' name='options' mode='ios'></ion-icon>
+        SORT/FILTER
+      </ion-button>
+    </ion-list-header>
+    <div *ngFor="let items of itemDetails">
+      <div class="smallScreen">
+        <ion-item>
+          <ion-thumbnail [ngStyle]="{'background':'url('+ items.thumbnail +')'}" slot='start'> </ion-thumbnail>
+          <ion-label>
+            <h2>{{items.title}}</h2>
+            <p class="paraSmallExtraa">{{items.subTitle}}</p>
+            <div class="sameLine">
+              <ion-img src={{items.imgSmall}} class="smallIMg"></ion-img>
+              <ion-text class="ion-text-wrap">{{items.text}} </ion-text>
+            </div>
+          </ion-label>
+        </ion-item>
+        <ion-item class="itemBottomTimeCost">
+          <div class="paddingRight">
+            <ion-text><span>&#10031;</span> {{items.rate}}</ion-text>
+            <ion-text class="mediumText">{{items.time}}</ion-text>
+            <ion-text>&#8377; {{items.cost}}</ion-text>
+          </div>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
+
+
+</ion-content>
